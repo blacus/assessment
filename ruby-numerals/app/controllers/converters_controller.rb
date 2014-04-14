@@ -7,8 +7,10 @@ class ConvertersController < ApplicationController
   	@convert = Converter.new
   	@convert.number = params[:number]
 
-  	if request.post? && @convert.valid?
+  	if @convert.valid?
   		@number = @convert.number.to_i
+    else
+      render :new
   	end
   end
   

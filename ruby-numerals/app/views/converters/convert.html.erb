@@ -1,23 +1,13 @@
 <div class="container">		
 	<div class="row">					
 		<div class="col-md-12">	
-		<% if @convert.errors.any? %>				
-			<div class="alert alert-danger">
-		    	<h2><%= pluralize(@convert.errors.count, "error") %> prohibited this number from being converted:</h2>
-		    	<ul>
-		    		<% @convert.errors.full_messages.each do |msg| %>
-		      		<li><%= msg %></li>
-		    		<% end %>
-		    	</ul>
-		  	</div>
-		<% end %>
-		<% if request.post? %>	
-			<div class="alert alert-success">		
-				<span class="result-string"><%= "#{@number}" %></span>
-				converts => 
-				<span class="result-string"><%= "#{@number.humanize}" %></span>
-			</div>
-		<% end %>	
+		
+		<div class="alert alert-success">		
+			<span class="result-string"><%= "#{@number}" %></span>
+			converts => 
+			<span class="result-string"><%= "#{@number.humanize}" %></span>
+		</div>
+			
 		</div>
 	</div>	
 

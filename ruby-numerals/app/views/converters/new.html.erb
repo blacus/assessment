@@ -1,4 +1,18 @@
 <div class="container">	
+	<div class="row">
+		<div class="col-lg-12">
+			<% if @convert.errors.any? %>				
+			<div class="alert alert-danger">
+		    	<h2><%= pluralize(@convert.errors.count, "error") %> prohibited this number from being converted:</h2>
+		    	<ul>
+		    		<% @convert.errors.full_messages.each do |msg| %>
+		      		<li><%= msg %></li>
+		    		<% end %>
+		    	</ul>
+		  	</div>
+			<% end %>
+		</div>
+	</div>
 	<div class="row">							
 		<div class="col-lg-4">													
 			<%= render "form" %>								

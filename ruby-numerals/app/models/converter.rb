@@ -2,6 +2,7 @@ require 'active_model'
 
 class Converter 
 
+  include ActiveModel::Model
   include ActiveModel::Validations
   
   attr_accessor :number
