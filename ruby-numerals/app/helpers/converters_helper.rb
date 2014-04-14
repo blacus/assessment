@@ -56,21 +56,21 @@ module ConvertersHelper
 				
 				if divider == 100
 
-					input.each_with_index{ |n, i|  		
+					input.each_with_index do |n, i|  		
 						str = "#{convert n}"
 						str = (i == length-2) ? "#{str} hundred and" : str
 						output << str
-					}				
+					end				
 					
 				else
-					input.each_with_index{ |n, i|  
+					input.each_with_index do |n, i|  
 						num = convert n							
 						unless num.nil?		
 							str = (i != length-1)? "#{num} #{LOTS[divider**(length-i-1)]}" :  "#{num}"
 							str = (length > 1 && i == length-1 && n < 100) ? "and " + str : str
 							output <<  str						
 						end
-					}	
+					end	
 
 				end
 			end
