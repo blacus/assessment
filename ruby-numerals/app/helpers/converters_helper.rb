@@ -44,30 +44,36 @@ module ConvertersHelper
 
 	class::Numeric	
 		def humanize
-			divider = (self < 2000 && self > 1099) ? 100 : 1000
-			input = get_nums divider
-			length = input.count
-			output = []		
-			if divider == 100
 
-				input.each_with_index{ |n, i|  		
-					str = "#{convert n}"
-					str = (i == length-2) ? "#{str} hundred and" : str
-					output << str
-				}				
-				
+			output = []	
+
+			if self == 0 
+				output << NUMERICALS[self]
 			else
-				input.each_with_index{ |n, i|  
-					num = convert n							
-					unless num.nil?		
-						str = (i != length-1)? "#{num} #{LOTS[divider**(length-i-1)]}" :  "#{num}"
-						str = (length > 1 && i == length-1 && n < 100) ? "and " + str : str
-						output <<  str						
-					end
-				}	
+				divider = (self < 2000 && self > 1099) ? 100 : 1000
+				input = get_nums divider
+				length = input.count
+				
+				if divider == 100
 
+					input.each_with_index{ |n, i|  		
+						str = "#{convert n}"
+						str = (i == length-2) ? "#{str} hundred and" : str
+						output << str
+					}				
+					
+				else
+					input.each_with_index{ |n, i|  
+						num = convert n							
+						unless num.nil?		
+							str = (i != length-1)? "#{num} #{LOTS[divider**(length-i-1)]}" :  "#{num}"
+							str = (length > 1 && i == length-1 && n < 100) ? "and " + str : str
+							output <<  str						
+						end
+					}	
+
+				end
 			end
-
 			output.join(", ").sub(/(, and)|( and,)/, " and").sub(/ and zero/, "")
 
 		end	
