@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+	<div class="panel-body">	
+
+	<%= form_tag converters_path, method: :post do %>
+		<div class="form-group">
+		  <%= label_tag 'number', 'Type in an arabic number!' %>
+	  	  <%= number_field_tag 'number', params[:number], autofocus: true, class: 'form-control', pattern: '\d+' %>
+		</div>
+		<div class="form-group">
+			<%= submit_tag "Convert", class: 'btn btn-primary' %>
+		</div>	
+	<% end %>
+	</div>
+</div>
